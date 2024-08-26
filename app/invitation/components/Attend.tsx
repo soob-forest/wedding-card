@@ -2,12 +2,20 @@
 import { useState } from "react";
 
 import { createClient } from "../../utils/supabase/client";
-import { submitAttendance } from "../actions/submit-attendance";
-
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 export default function Attend() {
   const supabase = createClient();
 
-  // const [loading, setLoading] = useState(true);
   const [visitable, setVisitable] = useState<boolean>(true);
   const [accommodation, setAccommodation] = useState<boolean>(true);
   const [name, setName] = useState<string | undefined>(undefined);
@@ -22,12 +30,202 @@ export default function Attend() {
 
   return (
     <>
-      {/* // <>name: {data[0].name}</>
-      // <br />
-      // <>phone: {data[0].phone}</> */}
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center">
         <section className="con-wrap p-4 w-full max-w-md">
-          <h1 className="text-center text-xl font-semibold mb-4">
+          <Dialog>
+            <DialogTrigger
+              className={`px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+            >
+              참석 여부 전달하기
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md overflow-y-scroll max-h-screen">
+              <DialogHeader>
+                <DialogTitle>오실건가요?</DialogTitle>
+              </DialogHeader>
+              <div className="row-wrap mb-4">
+                <p className="item-ttl text-lg font-semibold mb-2">
+                  참석 여부를 선택해 주세요
+                </p>
+                <ul className="grid w-full gap-6 md:grid-cols-2">
+                  <li>
+                    <input
+                      type="radio"
+                      id="visitableRadio"
+                      name="attend"
+                      value="visitableRadio"
+                      className="hidden peer"
+                      checked={visitable}
+                      onClick={(e) => setVisitable(true)}
+                      onChange={(e) => e}
+                      required
+                    />
+                    <label
+                      htmlFor="visitableRadio"
+                      className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    >
+                      <div className="block">
+                        <div className="w-full text-lg font-semibold">참석</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="unVisitableRadio"
+                      name="attend"
+                      className="hidden peer"
+                      value="unVisitableRadio"
+                      checked={!visitable}
+                      onClick={(e) => setVisitable(false)}
+                      onChange={(e) => e}
+                    />
+                    <label
+                      htmlFor="unVisitableRadio"
+                      className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    >
+                      <div className="block">
+                        <div className="w-full text-lg font-semibold">불참</div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="row-wrap mb-4">
+                <p className="item-ttl text-lg font-semibold mb-2">1박 ~ 2일</p>
+                <ul className="grid w-full gap-6 md:grid-cols-2">
+                  <li>
+                    <input
+                      type="radio"
+                      id="accommodation"
+                      name="accommodation"
+                      className="hidden peer"
+                      checked={accommodation}
+                      onClick={(e) => setAccommodation(true)}
+                      onChange={(e) => e}
+                      required
+                    />
+                    <label
+                      htmlFor="accommodation"
+                      className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    >
+                      <div className="block">
+                        <div className="w-full text-lg font-semibold">예쓰</div>
+                      </div>
+                    </label>
+                  </li>
+                  <li>
+                    <input
+                      type="radio"
+                      id="notAccommodation"
+                      name="notAccommodation"
+                      className="hidden peer"
+                      value="notAccommodation"
+                      checked={!accommodation}
+                      onClick={(e) => setAccommodation(false)}
+                      onChange={(e) => e}
+                    />
+                    <label
+                      htmlFor="notAccommodation"
+                      className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    >
+                      <div className="block">
+                        <div className="w-full text-lg font-semibold">노옵</div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+              <div className="row-wrap mb-4">
+                <p className="item-ttl text-lg font-semibold mb-2">
+                  성함<span className="text-red-500 ml-1">(필수)</span>
+                </p>
+                <div className="inner">
+                  <div className="item w-full">
+                    <input
+                      id="name"
+                      type="text"
+                      className="w-full border border-gray-300 p-2 rounded-lg"
+                      value={name || ""}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row-wrap mb-4">
+                <p className="item-ttl text-lg font-semibold mb-2">
+                  대표 연락처<span className="text-red-500 ml-1">(필수)</span>
+                </p>
+                <div className="inner">
+                  <div className="item w-full">
+                    <input
+                      type="text"
+                      className="w-full border border-gray-300 p-2 rounded-lg"
+                      value={phone || ""}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row-wrap mb-4">
+                <p className="item-ttl text-lg font-semibold mb-2">
+                  추가 전달 사항
+                </p>
+                <div className="inner">
+                  <textarea
+                    placeholder="추가적으로 주최자에게 전달하고 싶은 내용을 작성해 주세요."
+                    className="w-full border border-gray-300 p-2 rounded-lg h-32"
+                    value={comment || ""}
+                    onChange={(e) => setComment(e.target.value)}
+                  ></textarea>
+                </div>
+              </div>
+              {/* <div className="flex justify-center items-center">
+                <button
+                  className={`px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+                  onClick={async () => {
+                    const { error } = await supabase
+                      .from("attendances")
+                      .insert({
+                        visitable,
+                        accommodation,
+                        name,
+                        phone,
+                        comment,
+                      });
+                    console.log(error);
+                  }}
+                >
+                  참석 의사 전달
+                </button>
+              </div> */}
+              <DialogFooter className="sm:justify-start">
+                <DialogClose asChild>
+                  <Button
+                    type="button"
+                    variant="default"
+                    onClick={async () => {
+                      const { error } = await supabase
+                        .from("attendances")
+                        .insert({
+                          visitable,
+                          accommodation,
+                          name,
+                          phone,
+                          comment,
+                        });
+                      console.log(error);
+                    }}
+                  >
+                    <div className="item-ttl text-lg font-semibold">
+                      참석 의사 전달
+                    </div>
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+          {/* <h1 className="text-center text-xl font-semibold mb-4">
             참석 여부 전달하기
           </h1>
 
@@ -35,86 +233,95 @@ export default function Attend() {
             <p className="item-ttl text-lg font-semibold mb-2">
               참석 여부를 선택해 주세요
             </p>
-            <div className="inner flex justify-between">
-              <div className="item">
-                <div className="check_box">
-                  <input
-                    type="radio"
-                    id="visitableRadio"
-                    name="attend"
-                    className="hidden"
-                    checked={visitable}
-                    onClick={(e) => setVisitable(true)}
-                    onChange={(e) => e}
-                  />
-                  <label
-                    htmlFor="visitableRadio"
-                    className="sec-item-icon flex items-center justify-center cursor-pointer border p-2 rounded-lg"
-                  >
-                    <span className="chk-txt">참석 가능</span>
-                  </label>
-                </div>
-              </div>
-              <div className="item">
-                <div className="check_box">
-                  <input
-                    type="radio"
-                    id="unVisitableRadio"
-                    name="attend"
-                    className="hidden"
-                    checked={!visitable}
-                    onClick={(e) => setVisitable(false)}
-                    onChange={(e) => e}
-                  />
-                  <label
-                    htmlFor="unVisitableRadio"
-                    className="sec-item-icon flex items-center justify-center cursor-pointer border p-2 rounded-lg"
-                  >
-                    <span className="chk-txt">참석 불가</span>
-                  </label>
-                </div>
-              </div>
-            </div>
+            <ul className="grid w-full gap-6 md:grid-cols-2">
+              <li>
+                <input
+                  type="radio"
+                  id="visitableRadio"
+                  name="attend"
+                  value="visitableRadio"
+                  className="hidden peer"
+                  checked={visitable}
+                  onClick={(e) => setVisitable(true)}
+                  onChange={(e) => e}
+                  required
+                />
+                <label
+                  htmlFor="visitableRadio"
+                  className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                >
+                  <div className="block">
+                    <div className="w-full text-lg font-semibold">참석</div>
+                  </div>
+                </label>
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  id="unVisitableRadio"
+                  name="attend"
+                  className="hidden peer"
+                  value="unVisitableRadio"
+                  checked={!visitable}
+                  onClick={(e) => setVisitable(false)}
+                  onChange={(e) => e}
+                />
+                <label
+                  htmlFor="unVisitableRadio"
+                  className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+                >
+                  <div className="block">
+                    <div className="w-full text-lg font-semibold">불참</div>
+                  </div>
+                </label>
+              </li>
+            </ul>
           </div>
 
           <div className="row-wrap mb-4">
             <p className="item-ttl text-lg font-semibold mb-2">1박 ~ 2일</p>
-            <div className="inner flex justify-between">
-              <div className="check_box">
+            <ul className="grid w-full gap-6 md:grid-cols-2">
+              <li>
                 <input
                   type="radio"
                   id="accommodation"
                   name="accommodation"
-                  className="hidden"
+                  className="hidden peer"
                   checked={accommodation}
                   onClick={(e) => setAccommodation(true)}
                   onChange={(e) => e}
+                  required
                 />
                 <label
                   htmlFor="accommodation"
-                  className="sec-item-icon flex items-center justify-center cursor-pointer border p-2 rounded-lg"
+                  className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                 >
-                  <span className="chk-txt">예쓰</span>
+                  <div className="block">
+                    <div className="w-full text-lg font-semibold">예쓰</div>
+                  </div>
                 </label>
-              </div>
-              <div className="check_box">
+              </li>
+              <li>
                 <input
                   type="radio"
                   id="notAccommodation"
-                  name="accommodation"
-                  className="hidden"
+                  name="notAccommodation"
+                  className="hidden peer"
+                  value="notAccommodation"
                   checked={!accommodation}
                   onClick={(e) => setAccommodation(false)}
                   onChange={(e) => e}
                 />
                 <label
                   htmlFor="notAccommodation"
-                  className="sec-item-icon flex items-center justify-center cursor-pointer border p-2 rounded-lg"
+                  className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                 >
-                  <span className="chk-txt">높</span>
+                  <div className="block">
+                    <div className="w-full text-lg font-semibold">노옵</div>
+                  </div>
                 </label>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
           <div className="row-wrap mb-4">
             <p className="item-ttl text-lg font-semibold mb-2">
@@ -159,54 +366,26 @@ export default function Attend() {
                 onChange={(e) => setComment(e.target.value)}
               ></textarea>
             </div>
-          </div>
-          <div className="row-wrap personal-info mb-4">
-            <p className="item-ttl text-lg font-semibold mb-2">
-              개인정보 수집 및 이용 동의
-              <span className="text-red-500 ml-1">(필수)</span>
-            </p>
-            <p className="info-txt text-sm text-gray-600 mb-2">
-              참석여부 전달을 위한 개인정보 수집 및 이용에 동의해 주세요.
-              <br />
-              · 제공 받는 자 : 모바일 청첩장 주문자 (신랑, 신부측)
-              <br />
-              · 이용 목적 : 행사 참석여부 확인
-              <br />
-              · 제공 항목 : 성함, 대표 연락처, 동행인원, 식사여부 중 제공받는
-              정보에 한함
-              <br />
-              · 보유 기간 : 모바일 청첩장 만료시까지
-              <br />* 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있으며,
-              동의 거부 시 참석여부 서비스 이용이 불가합니다.
-            </p>
-            <div className="check-wrap flex items-center">
-              <input type="checkbox" id="agree" className="hidden" />
-              <label
-                htmlFor="agree"
-                className="basic-checkbox flex items-center cursor-pointer"
-              >
-                <span className="border border-gray-300 p-2 rounded-lg mr-2"></span>
-                <span className="label-text">수집 및 이용에 동의합니다.</span>
-              </label>
-            </div>
-          </div>
+          </div> */}
         </section>
       </div>
-      {/* <button formAction={submitAttendance}>제출의사 전달</button> */}
-      <button
-        onClick={async () => {
-          const { error } = await supabase.from("attendances").insert({
-            visitable,
-            accommodation,
-            name,
-            phone,
-            comment,
-          });
-          console.log(error);
-        }}
-      >
-        참석 의사 전달
-      </button>
+      {/* <div className="flex justify-center items-center">
+        <button
+          className={`px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          onClick={async () => {
+            const { error } = await supabase.from("attendances").insert({
+              visitable,
+              accommodation,
+              name,
+              phone,
+              comment,
+            });
+            console.log(error);
+          }}
+        >
+          참석 의사 전달
+        </button>
+      </div> */}
     </>
   );
 }

@@ -2,7 +2,7 @@ function Greeting() {
   return (
     <div className="flex flex-col items-center justify-center h-full w-8/12">
       <div className="text-2xl font-bold mb-4">이제 서로, 평생 함께</div>
-      <div className="text-lg mb-8 text-center">
+      <div className="text-base mb-8 text-center font-mono tracking-widest">
         서로가 마주보며 다져온 사랑을
         <br />
         이제 함께 한 곳을 바라보며
@@ -24,22 +24,14 @@ function Greeting() {
           <div>
             <div className="flex items-center mb-4">
               <p className="flex items-center">
-                <span className="mr-2">이현욱</span>
-                <span className="mx-2">•</span>
-                <span>김미자</span>
+                <span className="mr-2">이현욱 • 김미자의 말잘듣는 아들</span>
               </p>
-              <p className="mx-2">의</p>
-              <p className="mx-2">말잘듣는 아들</p>
               <p className="font-semibold">수배</p>
             </div>
             <div className="flex items-center">
               <p className="flex items-center">
-                <span className="mr-2">조장연</span>
-                <span className="mx-2">•</span>
-                <span>한선자</span>
+                <span className="mr-2">조장연 • 한선자의 말안듣는 딸</span>
               </p>
-              <p className="mx-2">의</p>
-              <p className="mx-2">말안듣는 딸</p>
               <p className="font-semibold">인혜</p>
             </div>
           </div>

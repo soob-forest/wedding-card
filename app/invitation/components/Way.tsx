@@ -2,12 +2,14 @@ import React from "react";
 
 export const Way = () => {
   return (
-    <>
-      <div className="sec-tit text-2xl font-bold mb-4">오시는길</div>
+    <div className="flex flex-col items-center justify-center h-full w-8/12">
+      <div className="sec-tit text-2xl font-bold">오시는길</div>
       <div className="map-area">
-        <div className="head mb-4">
-          <div className="tit text-xl font-semibold">그리너리웨딩</div>
-          <div className="txt text-lg">
+        <div className="head mt-2 mb-4">
+          <div className="text-base font-mono font-semibold tracking-wider">
+            그리너리웨딩
+          </div>
+          <div className="text-sm mb-8 text-center font-mono tracking-normal">
             <p>충북 청주시 청원구 새터로176번길 157-1</p>
           </div>
         </div>
@@ -19,6 +21,6 @@ export const Way = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
