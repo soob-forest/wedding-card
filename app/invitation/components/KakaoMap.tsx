@@ -7,7 +7,7 @@ export default function KakaoMapEmbed() {
         width: "360px",
         height: "310px",
         color: "#333",
-        position: "relative",
+        // position: "relative",
       }}
     >
       <div style={{ height: "240px" }}>
@@ -52,7 +52,7 @@ export default function KakaoMapEmbed() {
         <div
           style={{
             float: "right",
-            position: "relative",
+            // position: "relative",
             top: "1px",
             fontSize: "11px",
           }}
@@ -79,7 +79,7 @@ export default function KakaoMapEmbed() {
               margin: "0 8px 0 9px",
               height: "11px",
               verticalAlign: "top",
-              position: "relative",
+              // position: "relative",
               top: "2px",
               borderLeft: "1px solid #d0d0d0",
               float: "left",
@@ -107,7 +107,7 @@ export default function KakaoMapEmbed() {
               margin: "0 8px 0 9px",
               height: "11px",
               verticalAlign: "top",
-              position: "relative",
+              // position: "relative",
               top: "2px",
               borderLeft: "1px solid #d0d0d0",
               float: "left",

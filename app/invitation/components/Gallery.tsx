@@ -7,8 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import React from "react";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+
 function Gallery() {
   const categories = [
     {
@@ -48,6 +48,9 @@ function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [endX, setEndX] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const openModal = (index: number) => {
     setCurrentIndex(index);
@@ -56,6 +59,35 @@ function Gallery() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setStartX(e.clientX);
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    setEndX(e.clientX);
+    handleSlide();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setEndX(e.changedTouches[0].clientX);
+    handleSlide();
+  };
+
+  const handleSlide = () => {
+    const distance = startX - endX;
+    const threshold = 50; // 슬라이드가 발생할 최소 거리 설정
+
+    if (distance > threshold) {
+      showNext();
+    } else if (distance < -threshold) {
+      showPrevious();
+    }
   };
 
   const showPrevious = () => {
@@ -89,12 +121,15 @@ function Gallery() {
         ))}
       </div>
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="flex w-full">
           {selectedCategory.images.map((src, index) => (
-            <CarouselItem key={index} className="basis-1/2 flex justify-center">
+            <CarouselItem
+              key={index}
+              className="w-full flex-shrink-0 flex justify-center"
+            >
               <img
                 src={src}
-                className="w-full h-auto max-w-md cursor-pointer"
+                className="w-full h-64 object-contain max-w-md cursor-pointer"
                 onClick={() => openModal(index)}
               />
             </CarouselItem>
@@ -103,9 +138,6 @@ function Gallery() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <p className="text-center mt-4">
-        이미지를 클릭하시면 확대보기가 가능합니다.
-      </p>
 
       {/* Modal */}
       {isModalOpen && (
@@ -116,19 +148,14 @@ function Gallery() {
           >
             &times;
           </button>
-          <button
-            className="absolute left-2 text-white text-2xl z-50"
-            onClick={showPrevious}
+          <div
+            className="relative w-full h-full overflow-hidden flex items-center justify-center"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            ref={scrollContainerRef}
           >
-            &#8249;
-          </button>
-          <button
-            className="absolute right-2 text-white text-2xl z-50"
-            onClick={showNext}
-          >
-            &#8250;
-          </button>
-          <div className="relative w-full h-full overflow-hidden">
             <div
               className="absolute flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -141,12 +168,24 @@ function Gallery() {
                   <img
                     src={src}
                     alt="Full Size"
-                    className="max-h-screen max-w-full object-contain"
+                    className="max-h-screen object-contain"
                   />
                 </div>
               ))}
             </div>
           </div>
+          <button
+            className="absolute left-2 text-white text-2xl z-50"
+            onClick={showPrevious}
+          >
+            &#8249;
+          </button>
+          <button
+            className="absolute right-2 text-white text-2xl z-50"
+            onClick={showNext}
+          >
+            &#8250;
+          </button>
         </div>
       )}
     </div>
