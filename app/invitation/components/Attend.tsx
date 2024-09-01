@@ -198,7 +198,8 @@ export default function Attend() {
               </div>
               <div className="row-wrap mb-4">
                 <p className="item-ttl text-lg font-semibold mb-2">
-                  대표 연락처('-'는 제외하고 입력해주세요)
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
+                  대표연락처('-'는 제외하고 입력해주세요)
                   <span className="text-red-500 ml-1">(필수)</span>
                 </p>
                 <div className="inner">
