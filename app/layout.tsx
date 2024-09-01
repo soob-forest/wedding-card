@@ -10,8 +10,6 @@ const bmjua = localFont({
   variable: "--font-bmjua",
 });
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "이수배, 조인혜 청첩장",
   description: "조인혜, 이수배 청첩장",

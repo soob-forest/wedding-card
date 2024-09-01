@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -142,12 +143,12 @@ function Gallery() {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
-          <button
-            className="absolute top-2 right-2 text-white text-2xl z-50"
+          <Button
+            className="absolute top-2 right-2 bg-black text-white text-2xl z-50"
             onClick={closeModal}
           >
-            &times;
-          </button>
+            닫기
+          </Button>
           <div
             className="relative w-full h-full overflow-hidden flex items-center justify-center"
             onMouseDown={handleMouseDown}
@@ -178,13 +179,13 @@ function Gallery() {
             className="absolute left-2 text-white text-2xl z-50"
             onClick={showPrevious}
           >
-            &#8249;
+            {"<"}
           </button>
           <button
             className="absolute right-2 text-white text-2xl z-50"
             onClick={showNext}
           >
-            &#8250;
+            {">"}
           </button>
         </div>
       )}

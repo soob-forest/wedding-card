@@ -80,7 +80,7 @@ export default function Attend() {
                 setIsDialogOpen(true);
               }}
             >
-              <p className="w-96 text-2xl">참석 정보 입력하기</p>
+              <div className="text-2xl">참석 정보 입력하기</div>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md overflow-y-scroll max-h-screen">
               <DialogHeader>
@@ -199,7 +199,7 @@ export default function Attend() {
               <div className="row-wrap mb-4">
                 <p className="item-ttl text-lg font-semibold mb-2">
                   {/* eslint-disable-next-line react/no-unescaped-entities */}
-                  대표연락처('-'는 제외하고 입력해주세요)
+                  휴대폰 번호('-'는 제외하고 입력해주세요)
                   <span className="text-red-500 ml-1">(필수)</span>
                 </p>
                 <div className="inner">
@@ -227,13 +227,11 @@ export default function Attend() {
                 </div>
               </div>
               <DialogFooter className="sm:justify-start">
-                {/* <DialogClose asChild> */}
                 <Button type="button" variant="default" onClick={handleSubmit}>
                   <div className="item-ttl text-lg font-semibold">
                     참석 의사 전달
                   </div>
                 </Button>
-                {/* </DialogClose> */}
               </DialogFooter>
             </DialogContent>
           </Dialog>

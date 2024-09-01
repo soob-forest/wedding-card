@@ -16,21 +16,21 @@ export default function page() {
         <Intro />
       </section>
 
-      <hr className="border-t-2 border-gray-300 mb-20" />
+      <hr className="border-t-2 border-gray-300 mb-10" />
 
       {/*인사말*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
         <Greeting />
       </section>
 
-      <hr className="border-t-2 border-gray-300 mb-20" />
+      <hr className="border-t-2 border-gray-300 mb-10" />
 
       {/*갤러리, 호주 / 일상 / 스튜디오 탭 나누기*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
         <Gallery />
       </section>
 
-      <hr className="border-t-2 border-gray-300 mb-20" />
+      <hr className="border-t-2 border-gray-300 mb-10" />
 
       {/*오는 방법 카카오 네비 바로연결 ( 필수는 아님 )* 주소복사*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
@@ -42,10 +42,7 @@ export default function page() {
         <Attend />
       </section>
 
-      <hr className="border-t-2 border-gray-300 mb-20" />
-
-      {/*메세지 남기기*/}
-      <section></section>
+      <hr className="border-t-2 border-gray-300 mb-10" />
 
       {/*마음 전할 곳 토스로 보내기 가능한지, 계좌번호 복사 기능*/}
       <section className="flex items-center justify-center h-full w-full mb-20">
