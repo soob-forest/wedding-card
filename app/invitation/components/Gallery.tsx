@@ -1,57 +1,42 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import React, { useState, useRef } from "react";
 
 function Gallery() {
-  const categories = [
-    {
-      name: "일상",
-      images: [
-        "스냅/30.jpg",
-        "스냅/22.jpg",
-        "스냅/23.jpg",
-        "스냅/24.jpg",
-        "스냅/25.jpg",
-        "스냅/26.jpg",
-      ],
-    },
-    {
-      name: "호주",
-      images: [
-        "호주/1.jpg",
-        "호주/3.jpg",
-        "호주/4.jpg",
-        "호주/2.jpg",
-        "호주/5.jpg",
-      ],
-    },
-    {
-      name: "스냅",
-      images: [
-        "스냅/1.jpg",
-        "스냅/2.jpg",
-        "스냅/3.jpg",
-        "스냅/4.jpg",
-        "스냅/5.jpg",
-        "스냅/6.jpg",
-      ],
-    },
+  const images = [
+    "스냅/30.jpg",
+    "스냅/22.jpg",
+    "스냅/23.jpg",
+    "스냅/24.jpg",
+    "스냅/25.jpg",
+    "스냅/26.jpg",
+    "호주/1.jpg",
+    "호주/3.jpg",
+    "호주/4.jpg",
+    "호주/2.jpg",
+    "호주/5.jpg",
+    "스냅/1.jpg",
+    "스냅/2.jpg",
+    "스냅/3.jpg",
+    "스냅/4.jpg",
+    "스냅/5.jpg",
+    "스냅/6.jpg",
   ];
 
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [startX, setStartX] = useState(0);
   const [endX, setEndX] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // 모달 열기와 닫기 시 body의 overflow 속성을 조정
+    document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+    return () => {
+      // 컴포넌트가 언마운트되거나 모달이 닫힐 때 overflow를 자동으로 복원
+      document.body.style.overflow = "auto";
+    };
+  }, [isModalOpen]);
 
   const openModal = (index: number) => {
     setCurrentIndex(index);
@@ -82,7 +67,7 @@ function Gallery() {
 
   const handleSlide = () => {
     const distance = startX - endX;
-    const threshold = 50; // 슬라이드가 발생할 최소 거리 설정
+    const threshold = 20; // 슬라이드가 발생할 최소 거리 설정
 
     if (distance > threshold) {
       showNext();
@@ -93,58 +78,41 @@ function Gallery() {
 
   const showPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : selectedCategory.images.length - 1
+      prevIndex > 0 ? prevIndex - 1 : images.length - 1
     );
   };
 
   const showNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex < selectedCategory.images.length - 1 ? prevIndex + 1 : 0
+      prevIndex < images.length - 1 ? prevIndex + 1 : 0
     );
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-8/12">
       <div className="text-2xl font-bold mb-4">갤러리</div>
-      <div className="flex space-x-4 mb-4">
-        {categories.map((category) => (
-          <button
-            key={category.name}
-            className={`px-4 py-2 rounded ${
-              selectedCategory.name === category.name
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-700"
-            }`}
-            onClick={() => setSelectedCategory(category)}
+
+      <div className="grid grid-cols-3 gap-1">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            className="relative w-full h-full cursor-pointer bg-black bg-opacity-75"
+            onClick={() => openModal(index)}
           >
-            {category.name}
-          </button>
+            <img
+              src={src}
+              alt={`Gallery ${index}`}
+              className="w-full h-full object-contain"
+            />
+          </div>
         ))}
       </div>
-      <Carousel>
-        <CarouselContent className="flex w-full">
-          {selectedCategory.images.map((src, index) => (
-            <CarouselItem
-              key={index}
-              className="w-full flex-shrink-0 flex justify-center"
-            >
-              <img
-                src={src}
-                className="w-full h-64 object-contain max-w-md cursor-pointer"
-                onClick={() => openModal(index)}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
 
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
           <Button
-            className="absolute top-2 right-2 bg-black text-white text-2xl z-50"
+            className="absolute top-5 right-5 bg-black text-white text-2xl z-50"
             onClick={closeModal}
           >
             닫기
@@ -161,7 +129,7 @@ function Gallery() {
               className="absolute flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {selectedCategory.images.map((src, index) => (
+              {images.map((src, index) => (
                 <div
                   key={index}
                   className="w-full flex-shrink-0 flex justify-center items-center"
