@@ -9,10 +9,16 @@ const bmjua = localFont({
   weight: "45 920",
   variable: "--font-bmjua",
 });
-
+// { width: "device-width", initialScale: 1 }
 export const metadata: Metadata = {
   title: "이수배, 조인혜 청첩장",
   description: "조인혜, 이수배 청첩장",
+  viewport: {
+    initialScale: 1,
+    width: "device-width",
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({

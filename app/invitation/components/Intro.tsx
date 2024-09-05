@@ -1,7 +1,7 @@
 const Intro = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <img src="스냅/30.jpg" alt="Main" className="w-full h-full" />
+      <img src="메인사진.jpg" alt="Main" className="w-full h-full" />
       <div className="absolute top-0 w-full h-full">
         <video
           className="w-full h-full object-cover mix-blend-screen"
@@ -15,7 +15,7 @@ const Intro = () => {
         </video>
       </div>
 
-      <div className="flex flex-col items-center justify-center h-full w-8/12">
+      {/* <div className="flex flex-col items-center justify-center h-full w-8/12">
         <div className="text-center">
           <p className="p1 mb-4 text-base">
             <span className="vs-span text-lg">이수배</span>
@@ -29,7 +29,7 @@ const Intro = () => {
             청주 그리너리 웨딩
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

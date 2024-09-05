@@ -90,8 +90,8 @@ function Gallery() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-8/12">
+      <div className="text-3xl">📷</div>
       <div className="text-2xl font-bold mb-4">갤러리</div>
-
       <div className="grid grid-cols-3 gap-1">
         {images.map((src, index) => (
           <div
@@ -107,7 +107,6 @@ function Gallery() {
           </div>
         ))}
       </div>
-
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
