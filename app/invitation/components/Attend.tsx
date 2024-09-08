@@ -1,4 +1,3 @@
-"use client";
 import { useState } from "react";
 
 import { createClient } from "../../utils/supabase/client";
@@ -21,6 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Attend() {
   const supabase = createClient();
@@ -40,6 +40,8 @@ export default function Attend() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+
+  const { toast } = useToast();
 
   const handleSubmit = async () => {
     if (!isValidPhoneNumber(phone ?? "1")) {
@@ -66,12 +68,18 @@ export default function Attend() {
     } else {
       // 성공적으로 등록되었거나 다른 에러가 발생한 경우
       setIsDialogOpen(false); // Dialog를 닫음
+      toast({
+        title: "참석 정보를 전달해 주셔서 감사합니다.",
+        description: visitable
+          ? "10월 12일에 뵙겠습니다. 참석해 주셔서 감사합니다."
+          : undefined,
+      });
     }
   };
 
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div className=" flex justify-center items-center">
         <section className="con-wrap p-4 w-max">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger
@@ -82,7 +90,7 @@ export default function Attend() {
             >
               <div className="text-2xl">참석 정보 입력하기</div>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md overflow-y-scroll max-h-screen">
+            <DialogContent className="sm:max-w-md w-10/12 overflow-y-scroll max-h-screen h-5/6">
               <DialogHeader>
                 <DialogTitle>오실건가요?</DialogTitle>
               </DialogHeader>

@@ -3,6 +3,10 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 const bmjua = localFont({
   src: "./fonts/BMJUA_ttf.ttf",
   display: "swap",

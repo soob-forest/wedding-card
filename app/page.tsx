@@ -7,6 +7,7 @@ import { Way } from "./invitation/components/Way";
 import Attend from "./invitation/components/Attend";
 import SoobAccount from "./invitation/components/SoobAccount";
 import JJooAccount from "./invitation/components/JJooAccount";
+import Gallery2 from "./invitation/components/Gallery2";
 
 export default function page() {
   return (
@@ -27,7 +28,7 @@ export default function page() {
 
       {/*갤러리, 호주 / 일상 / 스튜디오 탭 나누기*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
-        <Gallery />
+        <Gallery2 />
       </section>
 
       <hr className="border-t-2 border-gray-300 mb-10" />
