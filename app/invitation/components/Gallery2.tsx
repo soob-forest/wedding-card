@@ -21,23 +21,22 @@ function Gallery2() {
   };
 
   const images = [
-    "스냅/30.jpg",
-    "스냅/22.jpg",
-    "스냅/23.jpg",
-    "스냅/24.jpg",
-    "스냅/25.jpg",
-    "스냅/26.jpg",
     "호주/1.jpg",
     "호주/3.jpg",
     "호주/4.jpg",
     "호주/2.jpg",
     "호주/5.jpg",
-    "스냅/1.jpg",
-    "스냅/2.jpg",
-    "스냅/3.jpg",
-    "스냅/4.jpg",
-    "스냅/5.jpg",
-    "스냅/6.jpg",
+    "호주/6.jpg",
+    "호주/7.jpg",
+    "호주/8.jpg",
+    "호주/9.jpg",
+    "호주/10.jpg",
+    "호주/11.jpg",
+    "호주/12.jpg",
+    "호주/13.jpg",
+    "호주/14.jpg",
+    "호주/15.jpg",
+    "호주/16.jpg",
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
