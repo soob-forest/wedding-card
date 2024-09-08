@@ -89,20 +89,20 @@ function Gallery() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-8/12">
+    <div className="flex flex-col items-center justify-center h-full w-full">
       <div className="text-3xl">📷</div>
       <div className="text-2xl font-bold mb-4">갤러리</div>
-      <div className="grid grid-cols-3 gap-1">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-1">
         {images.map((src, index) => (
           <div
             key={index}
-            className="relative w-full h-full cursor-pointer bg-black bg-opacity-75"
+            className="relative w-32 md:w-52 h-32 md:h-52 cursor-pointer bg-black bg-opacity-75"
             onClick={() => openModal(index)}
           >
             <img
               src={src}
               alt={`Gallery ${index}`}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
