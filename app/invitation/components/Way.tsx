@@ -2,8 +2,11 @@ import React from "react";
 import KakaoMap from "./KakaoMap";
 import { Button } from "@/components/ui/button";
 import { CopyIcon } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export const Way = () => {
+  const { toast } = useToast();
+
   return (
     <div className="flex flex-col items-center justify-center h-full w-full md:w-8/12 px-4">
       <div className="text-3xl text-center md:text-left">🛣️</div>
@@ -24,6 +27,9 @@ export const Way = () => {
           navigator.clipboard.writeText(
             "충북 청주시 청원구 새터로176번길 157-1"
           );
+          toast({
+            description: "주소가 복사되었습니다.",
+          });
         }}
       >
         <span className="sr-only">Copy</span>

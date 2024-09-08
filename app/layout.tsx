@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Toaster } from "@/components/ui/toaster";
 
 const bmjua = localFont({
   src: "./fonts/BMJUA_ttf.ttf",
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="kr" className={`${bmjua.variable}`}>
       <body className={bmjua.className}>{children}</body>
+      <Toaster />
     </html>
   );
 }
