@@ -12,9 +12,6 @@ const bmjua = localFont({
 export const metadata: Metadata = {
   title: "이수배, 조인혜 청첩장",
   description: "조인혜, 이수배 청첩장",
-  openGraph: {
-    images: "./opengraph-image.jpg",
-  },
 };
 
 export const viewport: Viewport = {
