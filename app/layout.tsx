@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   title: "이수배, 조인혜 청첩장",
   description: "조인혜, 이수배 청첩장",
   openGraph: {
-    images: "https://wedding-card-kappa.vercel.app/thumbnail.jpg",
+    images:
+      "https://wedding-card-kappa.vercel.app/%EB%A9%94%EC%9D%B8%EC%82%AC%EC%A7%84.jpg",
   },
 };
 
