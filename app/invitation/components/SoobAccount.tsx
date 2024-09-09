@@ -12,7 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CopyIcon } from "lucide-react";
-import { Label } from "@radix-ui/react-label";
 
 function SoobAccount() {
   return (
@@ -26,15 +25,18 @@ function SoobAccount() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>큰 거 온다</DialogTitle>
-            <DialogDescription>신랑 계좌 (이수배) 토스뱅크</DialogDescription>
+            <DialogDescription>큰 거 온다</DialogDescription>
           </DialogHeader>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-end space-x-2">
             <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-              <Input id="account" defaultValue="1000-1085-9679" readOnly />
+              <div>
+                신랑 계좌 (이수배)
+                <Input
+                  id="account"
+                  defaultValue="토스뱅크 1000-1085-9679"
+                  readOnly
+                />
+              </div>
             </div>
             <Button
               type="submit"
@@ -42,6 +44,27 @@ function SoobAccount() {
               className="px-3"
               onClick={() => {
                 navigator.clipboard.writeText("1000-1085-9679");
+              }}
+            >
+              <span className="sr-only">Copy</span>
+              <CopyIcon className="h-4 w-4" /> 복사
+            </Button>
+          </div>
+          <div className="flex items-end space-x-2">
+            <div className="flex-1 gap-2">
+              이현욱
+              <Input
+                id="account"
+                defaultValue="하나은행 179-19-018330"
+                readOnly
+              />
+            </div>
+            <Button
+              type="submit"
+              size="sm"
+              className="px-3"
+              onClick={() => {
+                navigator.clipboard.writeText("179-19-018330");
               }}
             >
               <span className="sr-only">Copy</span>

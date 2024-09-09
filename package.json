@@ -18,6 +18,9 @@
     "@shadcn/ui": "^0.0.4",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.45.0",
+    "@types/aos": "^3.0.7",
+    "@types/react-transition-group": "^4.4.11",
+    "aos": "^3.0.0-beta.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.1.6",
@@ -26,6 +29,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-spinners": "^0.13.8",
+    "react-transition-group": "^4.4.5",
     "swiper": "^11.1.12",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"

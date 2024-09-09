@@ -26,15 +26,18 @@ function JJooAccount() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>마음 표현하기</DialogTitle>
-            <DialogDescription>신부 계좌 (조인혜씨) 토스뱅크</DialogDescription>
+            <DialogDescription>큰 거 온다</DialogDescription>
           </DialogHeader>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-end space-x-2">
             <div className="grid flex-1 gap-2">
-              <Label htmlFor="link" className="sr-only">
-                Link
-              </Label>
-              <Input id="account" defaultValue="1000-1092-6256" readOnly />
+              <div>
+                신부 계좌 (조인혜)
+                <Input
+                  id="account"
+                  defaultValue="토스뱅크 1000-1092-6256"
+                  readOnly
+                />
+              </div>
             </div>
             <Button
               type="submit"

@@ -31,12 +31,6 @@ export default function Attend() {
   const [phone, setPhone] = useState<string | undefined>(undefined);
   const [comment, setComment] = useState<string | undefined>(undefined);
 
-  console.log("visitable:", visitable);
-  console.log("accommodation:", accommodation);
-  console.log("name:", name);
-  console.log("phone:", phone);
-  console.log("comment:", comment);
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -90,11 +84,31 @@ export default function Attend() {
 
   return (
     <>
-      <div className=" flex justify-center items-center">
+      <div
+        className=" flex flex-col justify-center items-center h-full w-8/12"
+        data-aos="fade-left"
+      >
+        <div className="text-xl md:text-2xl font-bold mb-4 text-center">
+          ✋참석&숙박 정보🛌
+        </div>
+        <div className="text-xs md:text-base mb-8 text-center tracking-widest leading-relaxed">
+          귀하게 내어주신 발걸음
+          <br />
+          더 귀하게 모실 수 있도록
+          <br />
+          참석 여부 및 숙박 여부를 알려주세요.
+          <br />
+          <br />
+          와인 및 각종 주류가 준비되어 있으니
+          <br />
+          신나는 파티를 오래 즐기다 가세요😘
+          <br />
+          돌아갈 걱정? 하지마세요!
+        </div>
         <section className="con-wrap p-4 w-max">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger
-              className={` px-4 py-2 rounded text-white bg-gray-500 border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+              className={`px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
               onClick={() => {
                 setIsDialogOpen(true);
               }}
@@ -155,7 +169,10 @@ export default function Attend() {
               </div>
 
               <div className="row-wrap mb-4">
-                <p className="item-ttl text-lg font-semibold mb-2">1박 ~ 2일</p>
+                <p className="item-ttl text-lg font-semibold mb-2">
+                  1박 어때요? (멀리서 오시는 분들을 위해 머물곳을 준비했어요.
+                  부담없이 신청 GOGO!) 🎉🛏️
+                </p>
                 <ul className="grid w-full gap-6 md:grid-cols-2">
                   <li>
                     <input
@@ -173,7 +190,7 @@ export default function Attend() {
                       className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >
                       <div className="block">
-                        <div className="w-full text-lg font-semibold">예쓰</div>
+                        <div className="w-full text-lg font-semibold">예</div>
                       </div>
                     </label>
                   </li>
@@ -193,7 +210,9 @@ export default function Attend() {
                       className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >
                       <div className="block">
-                        <div className="w-full text-lg font-semibold">노옵</div>
+                        <div className="w-full text-lg font-semibold">
+                          아니오
+                        </div>
                       </div>
                     </label>
                   </li>

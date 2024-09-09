@@ -6,6 +6,8 @@ import { Navigation, Pagination } from "swiper/modules";
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function Gallery2() {
   const breakpoints = {
@@ -37,16 +39,37 @@ function Gallery2() {
     "호주/14.jpg",
     "호주/15.jpg",
     "호주/16.jpg",
+    "스냅/1.jpg",
+    "스냅/2.jpg",
+    "스냅/3.jpg",
+    "스냅/4.jpg",
+    "스냅/5.jpg",
+    "스냅/6.jpg",
+    "스냅/7.jpg",
+    "스냅/8.jpg",
+    "스냅/9.jpg",
+    "스냅/10.jpg",
+    "스냅/11.jpg",
+    "스냅/12.jpg",
+    "스냅/13.jpg",
+    "스냅/14.jpg",
+    "스냅/15.jpg",
+    "스냅/16.jpg",
+    "스냅/17.jpg",
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [moreImage, setMoreImage] = useState(false);
   const [startX, setStartX] = useState(0);
   const [endX, setEndX] = useState(0);
-  // const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   SwiperCore.use([Navigation, Pagination]);
   let swiperRef = useRef<SwiperCore>();
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   useEffect(() => {
     // 모달 열기와 닫기 시 body의 overflow 속성을 조정
@@ -109,23 +132,51 @@ function Gallery2() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <div className="text-3xl">📷</div>
-      <div className="text-2xl font-bold mb-4">갤러리</div>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-1">
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="relative w-32 md:w-52 h-32 md:h-52 cursor-pointer bg-black bg-opacity-75"
-            onClick={() => openModal(index)}
-          >
-            <img
-              src={src}
-              alt={`Gallery ${index}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
+      <div className="text-3xl" data-aos="fade-up-right">
+        📷
       </div>
+      <div className="text-2xl font-bold mb-4" data-aos="fade-up-left">
+        갤러리
+      </div>
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-1 mb-3">
+        {images
+          .filter((src, index) => {
+            if (!moreImage) {
+              return index < 15;
+            }
+            return true;
+          })
+          .map((src, index) => (
+            <div
+              key={index}
+              className="relative w-32 md:w-52 h-32 md:h-52 cursor-pointer bg-black bg-opacity-75"
+              data-aos="flip-left"
+              onClick={() => openModal(index)}
+            >
+              <img
+                src={src}
+                alt={`Gallery ${index}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+      </div>
+      {moreImage && (
+        <Button
+          className="px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          onClick={() => setMoreImage(false)}
+        >
+          덜보기
+        </Button>
+      )}
+      {!moreImage && (
+        <Button
+          className="px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+          onClick={() => setMoreImage(true)}
+        >
+          더보기
+        </Button>
+      )}
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
@@ -161,51 +212,6 @@ function Gallery2() {
               );
             })}
           </Swiper>
-
-          {/* <Button
-            className="absolute top-5 right-5 bg-black text-white text-2xl z-50"
-            onClick={closeModal}
-          >
-            닫기
-          </Button>
-          <div
-            className="relative w-full h-full overflow-hidden flex items-center justify-center"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            ref={scrollContainerRef}
-          >
-            <div
-              className="absolute flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {images.map((src, index) => (
-                <div
-                  key={index}
-                  className="w-full flex-shrink-0 flex justify-center items-center"
-                >
-                  <img
-                    src={src}
-                    alt="Full Size"
-                    className="max-h-screen object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-          <button
-            className="absolute left-2 text-white text-2xl z-50"
-            onClick={showPrevious}
-          >
-            {"<"}
-          </button>
-          <button
-            className="absolute right-2 text-white text-2xl z-50"
-            onClick={showNext}
-          >
-            {">"}
-          </button> */}
         </div>
       )}
     </div>

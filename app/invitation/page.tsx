@@ -37,6 +37,8 @@ export default function page() {
         <Way />
       </section>
 
+      <hr className="border-t-2 border-gray-300 mb-10" />
+
       {/*참석여부 & 숙박여부 즐거운 날이니 오래 즐겼으면 좋겠습니다. 숙박 안하더라도*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
         <Attend />
