@@ -44,6 +44,17 @@ export default function Attend() {
   const { toast } = useToast();
 
   const handleSubmit = async () => {
+    if (name === undefined || name === null) {
+      setIsAlertOpen(true); // AlertDialog를 열도록 설정
+      setAlertMessage(`이름은 입력해 주세요! :)`);
+      return;
+    }
+
+    if (phone === undefined || phone === null) {
+      setIsAlertOpen(true); // AlertDialog를 열도록 설정
+      setAlertMessage(`휴대폰 번호는 입력해 주세요! :)`);
+      return;
+    }
     if (!isValidPhoneNumber(phone ?? "1")) {
       // 여기서 폰 번호가 유효하지 않다면 추가적인 로직을 수행할 수 있습니다.
       console.log("잘못된 형식의 휴대폰 번호입니다.");
