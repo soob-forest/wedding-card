@@ -86,12 +86,12 @@ export default function Attend() {
     <>
       <div
         className=" flex flex-col justify-center items-center h-full w-8/12"
-        data-aos="fade-left"
+        data-aos="fade-up"
       >
         <div className="text-xl md:text-2xl font-bold mb-4 text-center">
           ✋참석&숙박 정보🛌
         </div>
-        <div className="text-xs md:text-base mb-8 text-center tracking-widest leading-relaxed">
+        <div className="text-sm md:text-base mb-8 text-center tracking-widest leading-relaxed">
           귀하게 내어주신 발걸음
           <br />
           더 귀하게 모실 수 있도록
@@ -108,7 +108,7 @@ export default function Attend() {
         <section className="con-wrap p-4 w-max">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger
-              className={`px-4 py-2 rounded text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
+              className={` px-4 py-2 rounded text-white bg-gray-500 border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700`}
               onClick={() => {
                 setIsDialogOpen(true);
               }}

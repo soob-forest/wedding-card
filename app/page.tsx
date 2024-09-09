@@ -27,7 +27,7 @@ export default function Page() {
       {/*인사말*/}
       <section
         className="flex flex-col items-center justify-center h-full w-full mb-20"
-        data-aos="fade-up-right"
+        data-aos="fade-up"
       >
         <Greeting />
       </section>

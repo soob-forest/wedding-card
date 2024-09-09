@@ -56,10 +56,10 @@ export const Way = () => {
         className="px-5 py-1 sec-tit text-2xl font-bold mb-2 text-center md:text-left rounded-lg mt-16 mb-5"
         data-aos="fade-up"
       >
-        드리는 말
+        🚘운전 및 주차정보🅿
       </p>
       <div
-        className="text-xs md:text-base mb-8 text-center tracking-widest leading-relaxed"
+        className="text-sm md:text-base mb-8 text-center tracking-widest leading-relaxed"
         data-aos="fade-up"
       >
         들어오는 길이 협소하고 급격한 유턴이 요구되어

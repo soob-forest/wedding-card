@@ -5,7 +5,7 @@ function Greeting() {
       <div className="text-xl md:text-2xl font-bold mb-4 text-center">
         이제 서로, 평생 함께 🥂
       </div>
-      <div className="text-xs md:text-base mb-8 text-center tracking-widest leading-relaxed">
+      <div className="text-sm md:text-base mb-8 text-center tracking-widest leading-relaxed">
         평생을 함께 같이 웃을 수 있는 사람을 만났습니다.
         <br />
         <br />
