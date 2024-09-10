@@ -5,7 +5,7 @@ function Greeting() {
       <div className="text-xl md:text-2xl font-bold mb-4 text-center">
         이제 서로, 평생 함께 🥂
       </div>
-      <div className="text-sm md:text-base mb-8 text-center tracking-widest leading-relaxed">
+      <div className="text-base md:text-base mb-8 text-center tracking-widest leading-relaxed">
         평생을 함께 같이 웃을 수 있는 사람을 만났습니다.
         <br />
         <br />
@@ -32,6 +32,10 @@ function Greeting() {
         함께 파티를 즐겨주세요😘
       </div>
       <div className="w-full">
+        <div className="w-full flex justify-between mt-10 mb-14">
+          <img src={"/수배.jpg"} alt={`수배`} className="w-1/2 object-cover" />
+          <img src={"/인혜.jpg"} alt={`인혜`} className="w-1/2 object-cover" />
+        </div>
         <div className="flex flex-col space-y-1 text-center items-center justify-center text-sm">
           <div className="flex flex-col md:flex-row md:items-center mb-4">
             <p className="flex items-center justify-center md:justify-start">
@@ -46,11 +50,6 @@ function Greeting() {
             <p className="text-center md:text-left">인혜👩🏽‍🏫</p>
           </div>
         </div>
-      </div>
-      <div className="w-full flex justify-between mt-14">
-        <img src={"/수배.jpg"} alt={`수배`} className="w-1/2 object-cover" />
-
-        <img src={"/인혜.jpg"} alt={`인혜`} className="w-1/2 object-cover" />
       </div>
     </div>
   );

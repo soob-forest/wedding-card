@@ -68,8 +68,33 @@ export default function Attend() {
     if (error?.code === "23505") {
       // 이미 참석 여부가 등록되어 있는 경우
       console.log("이미 참석 여부를 등록 함");
-      setIsAlertOpen(true); // AlertDialog를 열도록 설정
-      setAlertMessage(`이미 참석 여부를 등록하셨습니다. (${name} / ${phone})`);
+
+      const { data, error } = await supabase
+        .from("attendances")
+        .update({
+          visitable,
+          accommodation,
+          comment,
+        })
+        .eq("name", name)
+        .eq("phone", phone)
+        .select();
+      console.log(data);
+
+      // setIsAlertOpen(true); // AlertDialog를 열도록 설정
+
+      if (error) {
+        setIsAlertOpen(true); // AlertDialog를 열도록 설정
+        setAlertMessage("01077092913 번호로 수정해야할 내용을 알려주세요.");
+      } else {
+        setIsDialogOpen(false); // Dialog를 닫음
+        toast({
+          title: "참석 정보를 전달해 주셔서 감사합니다.",
+          description: visitable
+            ? "10월 12일에 뵙겠습니다. 참석해 주셔서 감사합니다."
+            : undefined,
+        });
+      }
     } else {
       // 성공적으로 등록되었거나 다른 에러가 발생한 경우
       setIsDialogOpen(false); // Dialog를 닫음
@@ -84,14 +109,11 @@ export default function Attend() {
 
   return (
     <>
-      <div
-        className=" flex flex-col justify-center items-center h-full w-8/12"
-        data-aos="fade-up"
-      >
+      <div className=" flex flex-col justify-center items-center h-full w-8/12">
         <div className="text-xl md:text-2xl font-bold mb-4 text-center">
           ✋참석&숙박 정보🛌
         </div>
-        <div className="text-sm md:text-base mb-8 text-center tracking-widest leading-relaxed">
+        <div className="text-base md:text-base mb-8 text-center tracking-widest leading-relaxed">
           귀하게 내어주신 발걸음
           <br />
           더 귀하게 모실 수 있도록

@@ -132,10 +132,10 @@ function Gallery2() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <div className="text-3xl" data-aos="fade-up-right">
+      <div className="text-3xl" data-aos="fade-up">
         📷
       </div>
-      <div className="text-2xl font-bold mb-4" data-aos="fade-up-left">
+      <div className="text-2xl font-bold mb-4" data-aos="fade-up">
         갤러리
       </div>
       <div className="grid grid-cols-3 md:grid-cols-4 gap-1 mb-3">
