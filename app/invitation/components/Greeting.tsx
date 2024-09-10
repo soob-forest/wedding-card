@@ -47,6 +47,11 @@ function Greeting() {
           </div>
         </div>
       </div>
+      <div className="w-full flex justify-between mt-14">
+        <img src={"/수배.jpg"} alt={`수배`} className="w-1/2 object-cover" />
+
+        <img src={"/인혜.jpg"} alt={`인혜`} className="w-1/2 object-cover" />
+      </div>
     </div>
   );
 }

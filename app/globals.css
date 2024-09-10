@@ -73,3 +73,13 @@
   font-weight: 200;
   src: url("/fonts/BMJUA_ttf.ttf") format("truetype");
 }
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: white;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 0.7;
+}
