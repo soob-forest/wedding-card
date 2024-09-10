@@ -36,7 +36,7 @@ function Greeting() {
           <img src={"/수배.jpg"} alt={`수배`} className="w-1/2 object-cover" />
           <img src={"/인혜.jpg"} alt={`인혜`} className="w-1/2 object-cover" />
         </div>
-        <div className="flex flex-col space-y-1 text-center items-center justify-center text-sm">
+        <div className="flex flex-col space-y-1 text-center items-center justify-center text-base">
           <div className="flex flex-col md:flex-row md:items-center mb-4">
             <p className="flex items-center justify-center md:justify-start">
               <span className="mr-2">이현욱, 김미자의 말 잘 듣는 아들</span>

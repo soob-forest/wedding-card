@@ -9,6 +9,7 @@ import SoobAccount from "./invitation/components/SoobAccount";
 import JJooAccount from "./invitation/components/JJooAccount";
 import Gallery2 from "./invitation/components/Gallery2";
 import Aos from "aos";
+import Outro from "./invitation/components/Outro";
 
 export default function Page() {
   useEffect(() => {
@@ -80,6 +81,9 @@ export default function Page() {
             살림에 크게 보태겠습니다💪
           </div>
         </div>
+      </section>
+      <section className="flex flex-col items-center justify-center h-full w-full mb-20">
+        <Outro />
       </section>
     </div>
   );
