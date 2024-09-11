@@ -109,7 +109,7 @@ export default function Attend() {
 
   return (
     <>
-      <div className=" flex flex-col justify-center items-center h-full w-8/12">
+      <div className=" flex flex-col justify-center items-center h-full w-full">
         <div className="text-xl md:text-2xl font-bold mb-4 text-center">
           ✋참석&숙박 정보🛌
         </div>
