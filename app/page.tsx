@@ -17,7 +17,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="bg-pink-200 bg-opacity-10">
+    <div className=" bg-opacity-50">
       {/*메인 소개*/}
       <section className="flex flex-col items-center justify-center h-full w-full mb-20">
         <Intro />
@@ -82,10 +82,10 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center justify-center h-full w-full">
+      <section className="flex flex-col items-center justify-center h-full w-full mt-5">
         <Outro />
       </section>
-      <div className="w-full h-20"></div>
+      <div className="w-full h-10"></div>
     </div>
   );
 }

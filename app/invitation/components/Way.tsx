@@ -39,22 +39,23 @@ export const Way = () => {
         🚘운전 및 주차정보🅿
       </p>
       <div className="text-base md:text-base mb-8 text-center tracking-widest leading-relaxed">
-        들어오는 길이 협소하고 급격한 유턴이 요구되어
+        진입로가 협소하고 급격한 유턴이 요구되어
         <br />
-        운전고수만 진입이 가능합니다(ㅋㅋㅋ)
+        운전고수만 진입이 가능합니다🤪
         <br />
-        그래도 주차요원분께서 잘 안내해주실 예정이니
         <br />
-        근처에 오시면 주차요원분의 안내를 잘 따라주세요.
+        주차요원분께서 계실 예정이니
+        <br />
+        안내를 잘 따라주세요.
         <br />
         <br />
         ⭐중요!!!
         <br />
-        Medium Wedding 관계로
+        Medium Wedding인 관계로
         <br />
         주차 공간이 협소 할 수 있습니다.
         <br />
-        삼삼오오 모여서 와주세요 😭
+        삼삼오오 모여서 와주시면 좋아요😝
       </div>
     </div>
   );

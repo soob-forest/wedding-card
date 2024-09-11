@@ -6,7 +6,7 @@ function Greeting() {
         이제 서로, 평생 함께 🥂
       </div>
       <div className="text-base md:text-base mb-8 text-center tracking-widest leading-relaxed">
-        평생을 함께 같이 웃을 수 있는 사람을 만났습니다.
+        평생 함께 웃을 수 있는 사람을 만났습니다.
         <br />
         <br />
         성격도 성향도 많이 다르지만,
@@ -41,13 +41,13 @@ function Greeting() {
             <p className="flex items-center justify-center md:justify-start">
               <span className="mr-2">이현욱, 김미자의 말 잘 듣는 아들</span>
             </p>
-            <div className="text-center md:text-left">수배👨🏽‍💻</div>
+            <div className="text-xl text-center md:text-left">수배👨🏻‍💻</div>
           </div>
           <div className="flex flex-col md:flex-row md:items-center">
             <p className="flex items-center justify-center md:justify-start">
               <span className="mr-2">조장연, 한선자의 말 안 듣는 딸</span>
             </p>
-            <p className="text-center md:text-left">인혜👩🏽‍🏫</p>
+            <p className="text-xl text-center md:text-left">인혜👩🏻‍🏫</p>
           </div>
         </div>
       </div>
