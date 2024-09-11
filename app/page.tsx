@@ -82,9 +82,10 @@ export default function Page() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col items-center justify-center h-full w-full mb-20">
+      <section className="flex flex-col items-center justify-center h-full w-full">
         <Outro />
       </section>
+      <div className="w-full h-20"></div>
     </div>
   );
 }
