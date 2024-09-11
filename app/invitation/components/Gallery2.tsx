@@ -61,8 +61,6 @@ function Gallery2() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [moreImage, setMoreImage] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [endX, setEndX] = useState(0);
 
   SwiperCore.use([Navigation, Pagination]);
   let swiperRef = useRef<SwiperCore>();
@@ -89,47 +87,6 @@ function Gallery2() {
     setIsModalOpen(false);
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setStartX(e.clientX);
-  };
-
-  const handleMouseUp = (e: React.MouseEvent) => {
-    setEndX(e.clientX);
-    handleSlide();
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    setEndX(e.changedTouches[0].clientX);
-    handleSlide();
-  };
-
-  const handleSlide = () => {
-    const distance = startX - endX;
-    const threshold = 20; // 슬라이드가 발생할 최소 거리 설정
-
-    if (distance > threshold) {
-      showNext();
-    } else if (distance < -threshold) {
-      showPrevious();
-    }
-  };
-
-  const showPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex > 0 ? prevIndex - 1 : images.length - 1
-    );
-  };
-
-  const showNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex < images.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
       <div className="text-3xl" data-aos="fade-up">
@@ -149,7 +106,7 @@ function Gallery2() {
           .map((src, index) => (
             <div
               key={index}
-              className="relative w-32 md:w-52 h-32 md:h-52 cursor-pointer bg-black bg-opacity-75"
+              className="relative w-24 md:w-52 h-24 md:h-52 cursor-pointer bg-black bg-opacity-75"
               data-aos="flip-left"
               onClick={() => openModal(index)}
             >
