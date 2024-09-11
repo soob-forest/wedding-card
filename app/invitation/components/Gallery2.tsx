@@ -93,7 +93,7 @@ function Gallery2() {
         📷
       </div>
       <div className="text-2xl font-bold mb-4" data-aos="fade-up">
-        갤러리
+        웨딩 사진관
       </div>
       <div className="grid grid-cols-3 md:grid-cols-4 gap-1 mb-3">
         {images
