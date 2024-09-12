@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import Greeting from "./invitation/components/Greeting";
 import Intro from "./invitation/components/Intro";
-import Gallery from "./invitation/components/Gallery";
 import { Way } from "./invitation/components/Way";
 import Attend from "./invitation/components/Attend";
 import SoobAccount from "./invitation/components/SoobAccount";
