@@ -69,7 +69,7 @@ export default function Page() {
           data-aos-duration="2000"
         >
           <div className="text-xl md:text-2xl font-bold mb-4 text-center">
-            🤑수배, 인혜 응원하기💸
+            🤑수배, 인혜 축의금 전달히기💸
           </div>
 
           <SoobAccount />
